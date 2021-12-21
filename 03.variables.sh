@@ -16,3 +16,4 @@ e="1*2"
 
 echo value of a = $a
 echo value of b = ${b}
+#variables should not start with number it can start with underscore "_"
