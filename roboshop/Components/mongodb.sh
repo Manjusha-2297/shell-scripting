@@ -18,7 +18,7 @@ systemctl start mongod
 curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip"
 
 cd /tmp
-unzip -o mongodb.zip # -o to over ride the file rather than asking every time
+unzip -o mongodb.zip  >/tmp/log # -o to over ride the file rather than asking every time
 cd mongodb-main
-mongo < catalogue.js
-mongo < users.js 
+mongo < catalogue.js >/tmp/log
+mongo < users.js >/tmp/log
