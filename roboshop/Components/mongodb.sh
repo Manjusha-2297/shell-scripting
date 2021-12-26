@@ -5,7 +5,7 @@ gpgcheck=1
 enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc' >/etc/yum.repos.d/mongodb.repo
 
-yum install -y mongodb-org 
+yum install -y mongodb-org >/tmp/log # sending the output to the /tmp/log file
 
 
 # Update Liste IP address from 127.0.0.1 to 0.0.0.0 in config file
