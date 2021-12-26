@@ -1,3 +1,4 @@
+#!/bin/bash
 # fetch all the words which is having ##
 help:	##show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep
