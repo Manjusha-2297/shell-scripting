@@ -21,3 +21,16 @@ echo value of b = ${b}
 #DATE=26-12-2021
 DATE=$(date +%F)
 echo todays date is $DATE
+
+echo value of ABC is ${ABC}
+
+#list variables - variable holds multiple values
+b2=(100 100.1 abc)
+echo ${b2[0]}
+echo ${b2[2]}
+
+# named index/map/Dictonary  - insted of index number call with index name
+
+declare -A new=([colour]=black [fruit]=mango [number]=6)
+echo ${new[colour]}
+echo ${new[number]}
