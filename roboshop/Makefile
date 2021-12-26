@@ -1,7 +1,7 @@
 #!/bin/bash
 # fetch all the words which is having ##
-help:	##show this help
-	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep
+help:		## Show this help.
+	@fgrep -h "##" $(MAKEFILE_LIST) | grep -v fgrep 
 
 catalogue:	## install catalogue
 	@bash Components/catalogue.sh
