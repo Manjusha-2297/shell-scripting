@@ -1,34 +1,32 @@
-#!/bin/bash
-# fetch all the words which is having ##
-help:		## Show this help.
-	@fgrep -h "##" $(MAKEFILE_LIST) | grep -v fgrep 
+help:		## show this help.
+	@fgrep -h "##" $(MAKEFILE_LIST) | grep -v fgrep
 
-catalogue:	## install catalogue
-	@bash Components/catalogue.sh
+catalogue:	## install catalogue.
+	@bash components/catalogue.sh
 	
-mongodb:	## install mongodb
-	@bash Components/mongodb.sh
+mongodb:	## install mongodb.
+	@bash components/mongodb.sh
 	
-redis:		## install redis
-	@bash Components/redis.sh
+redis:		## install redis.
+	@bash components/redis.sh
 	
-user:		## install user
-	@bash Components/user.sh
+user:		## install user.
+	@bash components/user.sh
 	
-cart:		## install cart
-	@bash Components/cart.sh
+cart:		## install cart.
+	@bash components/cart.sh
 	
-mysql:		## install mysql
-	@bash Components/mysql.sh
+mysql:		## install mysql.
+	@bash components/mysql.sh
+
+shipping:	## Install Shipping
+	@bash components/shipping.sh
 	
-shipping:	## install shipping
-	@bash Components/shipping.sh
+rabbitmq:	## install rabbitmq.
+	@bash components/rabbitmq.sh
 	
-rabbitmq:	## install rabbitmq
-	@bash Components/rabbitmq.sh
+payment:	## install payment.
+	@bash components/payment.sh
 	
-payment:	## install payment
-	@bash Components/payment.sh
-	
-frontend:	## install frontend
-	@bash Components/frontend.sh
+frontend:	## install frontend.
+	@bash components/frontend.sh
