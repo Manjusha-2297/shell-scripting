@@ -16,7 +16,7 @@ print ()
     echo -n -e "$1\t\t" # to get in the same line
 }
 
-if [ $uid -ne 0 ]; then
+if [ $UID -ne 0 ]; then
 echo -e "\e[1;32m you should run this as root user\e[0m"
 exit 1
 fi
