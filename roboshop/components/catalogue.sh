@@ -18,9 +18,10 @@ print "Downloading catalogue"
 curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip"
 Status_Check $?
 
-cd /home/roboshop
 print "extractng catalogue archive"
-unzip /tmp/catalogue.zip &>>$LOG
+cd /home/roboshop
+rm -rf catalogue
+unzip -o /tmp/catalogue.zip &>>$LOG
 mv catalogue-main catalogue
 Status_Check $?
 
@@ -29,7 +30,7 @@ cd /home/roboshop/catalogue
 npm install --unsafe-perm &>>$LOG # should not run as root user so 
 Status_Check $?
 
-chown roboshop:roboshop -R /home/roboshop
+chown roboshop:roboshop -R /home/roboshop # to change the owner from root to roboshop
 
 # mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
 # systemctl daemon-reload
