@@ -20,9 +20,7 @@ Status_Check $?
 
 print "extractng catalogue archive"
 cd /home/roboshop
-rm -rf catalogue
-unzip -o /tmp/catalogue.zip &>>$LOG
-mv catalogue-main catalogue
+rm -rf catalogue && unzip -o /tmp/catalogue.zip &>>$LOG && mv catalogue-main catalogue
 Status_Check $?
 
 print "download nodejs dependencies"
@@ -32,7 +30,7 @@ Status_Check $?
 
 chown roboshop:roboshop -R /home/roboshop # to change the owner from root to roboshop
 
-# mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
-# systemctl daemon-reload
-# systemctl start catalogue
-# systemctl enable catalogue
+print "setup systemd service"
+mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service && systemctl daemon-reload && systemctl start catalogue && systemctl enable catalogue &>>$LOG
+Status_Check $?
+
