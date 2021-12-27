@@ -13,6 +13,7 @@ Status_Check() {
 
 print ()
 {
+    echo -e "\e[36m\n\t\t................$1........\e[0m\n" &>>$LOG
     echo -n -e "$1\t\t" # to get in the same line
 }
 
