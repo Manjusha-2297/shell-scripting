@@ -17,6 +17,9 @@ print ()
 }
 
 if [ $UID -ne 0 ]; then
-echo -e "\e[1;32m you should run this as root user\e[0m"
+echo -e "\e[1;31m you should run this as root user\e[0m"
 exit 1
 fi
+
+LOG=/tmp/roboshop.log
+rm -f $LOG # remove previous log and keep fresh log when executed

@@ -13,7 +13,7 @@ gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc' >/etc/yum.repos.d/mong
 Status_Check $?
 
 print "Installing mongodb\t"
-yum install -y mongodb-org &>>/tmp/log # sending the output to the /tmp/log file
+yum install -y mongodb-org &>>$LOG # sending the output to the /tmp/log file
 Status_Check $?
 
 print "Configuring mongodb\t"
@@ -33,12 +33,12 @@ Status_Check $?
 
 cd /tmp
 print "extracting schema archive"
-unzip -o mongodb.zip  &>>/tmp/log # -o to over ride the file rather than asking every time
+unzip -o mongodb.zip  &>>$LOG # -o to over ride the file rather than asking every time
 Status_Check $?
 cd mongodb-main
 print "Loading schema\t\t"
-mongo < catalogue.js &>>/tmp/log
-mongo < users.js &>>/tmp/log
+mongo < catalogue.js &>>$LOG
+mongo < users.js &>>$LOG
 Status_Check $?
 
 exit 0
