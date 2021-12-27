@@ -8,7 +8,7 @@ enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc' >/etc/yum.repos.d/mongodb.repo
 
 echo "Installing mongodb"
-yum install -y mongodb-org >/tmp/log # sending the output to the /tmp/log file
+yum install -y mongodb-org >>/tmp/log # sending the output to the /tmp/log file
 
 echo "Configuring mongodb"
 # Update Liste IP address from 127.0.0.1 to 0.0.0.0 in config file
@@ -24,8 +24,8 @@ curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongo
 
 cd /tmp
 echo "extracting schema archive"
-unzip -o mongodb.zip  >/tmp/log # -o to over ride the file rather than asking every time
+unzip -o mongodb.zip  >>/tmp/log # -o to over ride the file rather than asking every time
 cd mongodb-main
 echo "Loading schema"
-mongo < catalogue.js >/tmp/log
-mongo < users.js >/tmp/log
+mongo < catalogue.js >>/tmp/log
+mongo < users.js >>/tmp/log
