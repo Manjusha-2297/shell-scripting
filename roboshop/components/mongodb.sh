@@ -1,20 +1,7 @@
 #!/bin/bash
 
-Status_Check() {
-    
-    if [ $1 -eq 0 ]; then
-    echo -e "\e[32mSUCCESS\e[0m"
-    else
-    echo -e "\e[31mFAILURE\e[0m"
-    exit 2 # if there is any failure 
-    fi
-    
-}
+source components/common.sh
 
-print ()
-{
-    echo -n -e "$1\t\t" # to get in the same line
-}
 print "setting up mongodb repo\t"
 
 echo '[mongodb-org-4.2]
