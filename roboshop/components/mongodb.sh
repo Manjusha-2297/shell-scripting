@@ -27,7 +27,7 @@ Status_Check $?
 
 print "Installing mongodb"
 yum install -y mongodb-org &>>/tmp/log # sending the output to the /tmp/log file
-Status_Check
+Status_Check $?
 
 print "Configuring mongodb"
 # Update Liste IP address from 127.0.0.1 to 0.0.0.0 in config file
