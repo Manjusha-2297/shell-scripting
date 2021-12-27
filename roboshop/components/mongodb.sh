@@ -15,7 +15,7 @@ print ()
 {
     echo -n -e "$1\t\t" # to get in the same line
 }
-print "setting up mongodb repo"
+print "setting up mongodb repo\t"
 
 echo '[mongodb-org-4.2]
 name=MongoDB Repository
@@ -25,17 +25,17 @@ enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc' >/etc/yum.repos.d/mongodb.repo
 Status_Check $?
 
-print "Installing mongodb"
+print "Installing mongodb\t"
 yum install -y mongodb-org &>>/tmp/log # sending the output to the /tmp/log file
 Status_Check $?
 
-print "Configuring mongodb"
+print "Configuring mongodb\t"
 # Update Liste IP address from 127.0.0.1 to 0.0.0.0 in config file
 sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
 # Config file: /etc/mongod.conf
 Status_Check $?
 
-print "starting mongodb"
+print "starting mongodb\t"
 systemctl enable mongod
 systemctl start mongod
 Status_Check $?
@@ -49,7 +49,7 @@ print "extracting schema archive"
 unzip -o mongodb.zip  &>>/tmp/log # -o to over ride the file rather than asking every time
 Status_Check $?
 cd mongodb-main
-print "Loading schema\t"
+print "Loading schema\t\t"
 mongo < catalogue.js &>>/tmp/log
 mongo < users.js &>>/tmp/log
 Status_Check $?
