@@ -13,7 +13,7 @@ Status_Check() {
 
 print ()
 {
-    echo -n -e "$1\t\t " # to get in the same line
+    echo -n -e "$1\t\t" # to get in the same line
 }
 print "setting up mongodb repo"
 
@@ -49,7 +49,7 @@ print "extracting schema archive"
 unzip -o mongodb.zip  &>>/tmp/log # -o to over ride the file rather than asking every time
 Status_Check $?
 cd mongodb-main
-print "Loading schema"
+print "Loading schema\t"
 mongo < catalogue.js &>>/tmp/log
 mongo < users.js &>>/tmp/log
 Status_Check $?
