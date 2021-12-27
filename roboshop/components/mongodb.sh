@@ -13,7 +13,7 @@ Status_Check() {
 
 print ()
 {
-    echo -n -e "$1 " # to get in the same line
+    echo -n -e "$1\t\t " # to get in the same line
 }
 print "setting up mongodb repo"
 
