@@ -42,7 +42,7 @@ DOWNLOAD()
     curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip"
     Status_Check $?
 
-    print "extractng ${COMPONENT} archive"
+    print "extractng ${COMPONENT} archive\t"
       cd /home/roboshop
       rm -rf ${COMPONENT} && unzip -o /tmp/${COMPONENT}.zip &>>$LOG && mv ${COMPONENT}-main ${COMPONENT}
       Status_Check $?
@@ -51,7 +51,7 @@ DOWNLOAD()
 Systemd_Setup()
 {
   print "update systemd service\t"
-    sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/${COMPONENT}/systemd.service
+    sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' 's/REDIS_ENDPOINT/redis.roboshop.internal/' 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' /home/roboshop/${COMPONENT}/systemd.service
     Status_Check $?
 
     print "setup systemD service file"
