@@ -9,9 +9,16 @@ if [ -z "${INSTANCE_NAME}" ]; then
   exit 1
 fi
 
+# if instance is running it should not  create another instance
 aws ec2 describe-instances --filters "Name=tag:Name,Values=$INSTANCE_NAME" | jq .Reservations[].Instances[].State.Name | grep running &>/dev/null
 if [ $? -eq 0 ]; then
   echo "Instance $INSTANCE_NAME is already running"
+  exit 0
+fi
+
+aws ec2 describe-instances --filters "Name=tag:Name,Values=$INSTANCE_NAME" | jq .Reservations[].Instances[].State.Name | grep stopped &>/dev/null
+if [ $? -eq 0 ]; then
+  echo "Instance $INSTANCE_NAME is already created and stopped"
   exit 0
 fi
 
