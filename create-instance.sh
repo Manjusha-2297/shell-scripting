@@ -4,7 +4,7 @@ LID="lt-0e4f7d924175204ce" # spot instance launch template id
 LVR=2 # launch template version
 INSTANCE_NAME=$1
 
-if[ -z "${INSTANCE_NAME}" ]; then
+if [ -z "${INSTANCE_NAME}" ]; then
   echo "Input is missing"
   exit 1
 fi
