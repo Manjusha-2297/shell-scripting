@@ -55,7 +55,7 @@ Systemd_Setup()
     Status_Check $?
 
     print "setup systemD service file"
-    mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service && systemctl daemon-reload && systemctl start ${COMPONENT} && systemctl enable ${COMPONENT} &>>$LOG
+    mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service && systemctl daemon-reload && systemctl restart ${COMPONENT} && systemctl enable ${COMPONENT} &>>$LOG
     Status_Check $?
 }
 
