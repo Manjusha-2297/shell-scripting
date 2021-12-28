@@ -14,8 +14,13 @@ print "install redis\t\t\t"
 yum install redis -y &>>$LOG
 Status_Check $?
 
-print "Configure redis Listner adress\t"
+print "Configure redis Listner address\t"
+if [ -f /etc/redis.conf ]; then
 sed -i -e 's/127.0.0.1/0.0.0.0/'  /etc/redis.conf
+fi
+if [ -f /etc/redis/redis.conf ]; then
+sed -i -e 's/127.0.0.1/0.0.0.0/'  /etc/redis/redis.conf
+fi
 Status_Check $?
 
 
