@@ -66,7 +66,7 @@ NODEJS() {
   ADD_APP_USER
   DOWNLOAD
   print "download nodejs dependencies"
-  cd /home/roboshop/catalogue
+  cd /home/roboshop/${COMPONENT}
   npm install --unsafe-perm &>>$LOG # should not run as root user so
   Status_Check $?
   chown roboshop:roboshop -R /home/roboshop # to change the owner from root to roboshop
