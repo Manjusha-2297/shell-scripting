@@ -2,7 +2,7 @@
 
 source components/common.sh
 
-print "install erlang\t\t"
+print "install erlang\t\t\t"
 yum list installed| grep erlang &>>$LOG
 if [ $? -eq 0 ]; then
   echo "package already installed\t" &>>$LOG
@@ -23,7 +23,7 @@ print "Start RabbitMQ\t\t\t"
 systemctl enable rabbitmq-server  &>>$LOG && systemctl start rabbitmq-server &>>$LOG
 Status_Check $?
 
-print "Create application user\t"
+print "Create application user\t\t"
 rabbitmqctl list_users | grep roboshop &>>$LOG
 if [ $? -ne 0 ]; then
 rabbitmqctl add_user roboshop roboshop123 &>>$LOG

@@ -93,3 +93,20 @@ JAVA()
   Systemd_Setup
 
 }
+
+PYTHON()
+{
+  print "Install Python3"
+  yum install python36 gcc python3-devel -y &>>$LOG
+  Status_Check $?
+
+  ADD_APP_USER
+
+  DOWNLOAD
+
+  print "Install the dependencies"
+  cd /home/roboshop/payment
+  pip3 install -r requirements.txt &>>$LOG
+  Status_Check $?
+  
+}
