@@ -72,3 +72,32 @@ NODEJS() {
   chown roboshop:roboshop -R /home/roboshop # to change the owner from root to roboshop
   Systemd_Setup
 }
+
+JAVA()
+{
+  print "installing Maven"
+  yum install maven -y &>>$LOG
+  Status_Check $?
+
+  ADD_APP_USER
+  DOWNLOAD
+
+  cd /home/roboshop/shipping
+  print "make shipping package"
+  mvn clean package &>>$LOG
+  Status_Check $?
+  mv target/shipping-1.0.jar shipping.jar &>>$LOG
+  Status_Check $?
+  chown roboshop:roboshop -R /home/roboshop
+
+  exit
+
+  Update Servers IP address in /home/roboshop/shipping/systemd.service
+
+  Copy the service file and start the service.
+
+  # mv /home/roboshop/shipping/systemd.service /etc/systemd/system/shipping.service
+  # systemctl daemon-reload
+  # systemctl start shipping
+  # systemctl enable shipping
+}
