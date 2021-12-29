@@ -19,7 +19,7 @@ print "Start MySQL\t"
 systemctl enable mysqld &>>$LOG && systemctl start mysqld &>>$LOG
 Status_Check $?
 
-Print "Reset Default Password\t\t"
+print "Reset Default Password\t\t"
 echo 'show databases' | mysql -uroot -pRoboShop@1 &>>$LOG
 if [ $? -eq 0 ]; then
   echo "Root Password is already set" &>>$LOG
