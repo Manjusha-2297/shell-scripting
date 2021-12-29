@@ -2,10 +2,10 @@
 
 source components/common.sh
 
-print "install erlang"
+print "install erlang\t\t"
 yum list installed| grep erlang &>>$LOG
 if [ $? -eq 0 ]; then
-  echo "package already installed" &>>$LOG
+  echo "package already installed\t" &>>$LOG
 else
 yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erlang-23.2.6-1.el7.x86_64.rpm -y  &>>$LOG
 fi
@@ -15,16 +15,16 @@ print "Setup YUM repositories for RabbitMQ"
 curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash &>>$LOG
 Status_Check $?
 
-print "Install RabbitMQ"
+print "Install RabbitMQ\t\t"
 yum install rabbitmq-server -y &>>$LOG
 Status_Check $?
 
-print "Start RabbitMQ"
+print "Start RabbitMQ\t\t\t"
 systemctl enable rabbitmq-server  &>>$LOG && systemctl start rabbitmq-server &>>$LOG
 Status_Check $?
 
-print "Create application user"
-rabbitmqctl list_users | grep roboshop
+print "Create application user\t"
+rabbitmqctl list_users | grep roboshop &>>$LOG
 if [ $? -ne 0 ]; then
 rabbitmqctl add_user roboshop roboshop123 &>>$LOG
 fi
