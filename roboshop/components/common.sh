@@ -91,7 +91,4 @@ JAVA()
   chown roboshop:roboshop -R /home/roboshop
   Systemd_Setup
 
-  print "start shipping service"
-  systemctl daemon-reload &>>$LOG && systemctl start shipping && systemctl enable shipping
-  Status_Check $?
 }
