@@ -22,7 +22,7 @@ Status_Check $?
 DEFAULT_PASSWORD=$(grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}') # to get the last column as it is password
 
 echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" >/tmp/reset.sql
-mysql -u root -p"${DEFAULT_PASSWORD}" </tmp/reset.sql
+mysql  --connect-expired-password -u root -p"${DEFAULT_PASSWORD}" </tmp/reset.sql
 
 exit
 
