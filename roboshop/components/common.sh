@@ -51,7 +51,7 @@ DOWNLOAD()
 Systemd_Setup()
 {
   print "update systemd service\t"
-    sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e  's/MONGO_ENDPOINT/mongodb.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' /home/roboshop/${COMPONENT}/systemd.service
+    sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e  's/MONGO_ENDPOINT/mongodb.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/'  /home/roboshop/${COMPONENT}/systemd.service
     Status_Check $?
 
     print "setup systemD service file"
@@ -75,7 +75,7 @@ NODEJS() {
 
 JAVA()
 {
-  print "installing Maven"
+  print "installing Maven\t"
   yum install maven -y &>>$LOG
   Status_Check $?
 
@@ -89,12 +89,9 @@ JAVA()
   mv target/shipping-1.0.jar shipping.jar &>>$LOG
   Status_Check $?
   chown roboshop:roboshop -R /home/roboshop
+  Systemd_Setup
 
   exit
-
-  Update Servers IP address in /home/roboshop/shipping/systemd.service
-
-  Copy the service file and start the service.
 
   # mv /home/roboshop/shipping/systemd.service /etc/systemd/system/shipping.service
   # systemctl daemon-reload
