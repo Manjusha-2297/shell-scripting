@@ -96,7 +96,7 @@ JAVA()
 
 PYTHON()
 {
-  print "Install Python3"
+  print "Install Python3\t\t\t"
   yum install python36 gcc python3-devel -y &>>$LOG
   Status_Check $?
 
@@ -104,9 +104,16 @@ PYTHON()
 
   DOWNLOAD
 
-  print "Install the dependencies"
+  print "Install the dependencies\t"
   cd /home/roboshop/payment
   pip3 install -r requirements.txt &>>$LOG
   Status_Check $?
-  
+
+  USER_ID=$(id -u roboshop)
+  GROUP_ID=$(id -g roboshop)
+
+  print "Update roboshop user in Config"
+  sed -i -e "/uid/ c uid=${USER_ID}" -e "/gid/ c gid=${GROUP_ID}" /home/roboshop/payment/payment.ini &>>$LOG
+  Status_Check $?
+
 }
