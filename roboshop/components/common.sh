@@ -62,7 +62,7 @@ Systemd_Setup()
 
 NODEJS() {
   print "installing nodejs\t"
-  curl -fsSL https://rpm.nodesource.com/setup_lts.x | bash -
+  curl -fsSL https://rpm.nodesource.com/setup_lts.x | bash -  &>>$LOG
   yum install nodejs make gcc-c++ -y &>>$LOG
   Status_Check $?
   ADD_APP_USER
